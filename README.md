@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+# Cat Wars RPG
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app was made with the intention of testing new technologies for me like TypeScript, Chakra UI and also adding testing.
 
-## Available Scripts
+This game is one where you can select a team of Cats, you can select their class and have them fight a Boss!
 
-In the project directory, you can run:
+## General Objective
 
-### `yarn start`
+Create a fullstack application where the user can create a team of random generated cats and have them fight another random generated team.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Specific Objectives
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Use TypeScript with React.
+- Add testing with `react-testing-library`.
+- Send a GET request to the the API `https://robohash.org/${id}?set=set4` to obtain an Object which will be added to an array of objects which will represent a team of three Cats.
+- When making the request and obtaining the data, add to the objects the stats `hp` , `mp`, `strength`, `magic`, `pDefense`, `mDefense`, `speed`, depending on the classes.
+- Create the Classes `warrior`, `mage`, `rogue`, `knight`, each will have their own prefered stats which will be randomly generated when filling a team with a new member and after asking the user to select a Class.
+- Use Chakra UI for the styling.
 
-### `yarn test`
+## Libraries
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- axios.
+- create-react-app with TypeScript.
+- Chakra UI.
+- react-testing-library.
+- redux-toolkit.
 
-### `yarn build`
+## Logic
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+App asks user to create a team in the creation section, user can select the following classes:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Warrior:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - Heavily favours: None.
+  - Favours: `hp` ,`strength`, `pdefense`, `speed`.
+  - Weak: `mDefense`, `mp`.
+  - Abilities:
+    - `wolfStrike`: Deals `1.25*STR` physical. Costs 5MP.
+    - `lionHeart`: Deals `1*STR+(HP-currentHP)` physical. Costs 10MP.
 
-### `yarn eject`
+- Mage:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  - Heavily favours: `mp`, `magic`, `mDefense`.
+  - Favours: `speed`.
+  - Weak: `pDefense`, `hp`.
+  - Abilities:
+    - `fireBall`: Deals `1.25*MAG` magical. Costs 3MP.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Rogue:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  - Heavily favours: `speed`.
+  - Favours: `strength`, `mp`.
+  - Weak: `pDefense`, `mDefense`, `hp`.
+  - Abilities:
+    - `backstab`: Deals `1.5*SPEED` physical. Costs 3MP.
+    - `cloak`: Avoids damage. Costs 2MP.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Knight:
+  - Heavily favours: `hp`, `pDefense`.
+  - Favours: `strength`.
+  - Weak: `mDefense`, `mp`, `speed`.
+  - Abilities:
+    - `hitMe`: Makes enemy focus you. Costs 2MP.
+    - `hitHim`: Makes enemy focus another. Costs 2MP.
 
-## Learn More
+While the boss will have the following stats:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- HP: 500.
+- strength: 50.
+- pDefense: 40.
+- mDefense: 20.
+- speed: 20.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The cats recruited will be affected by RNG depending on what the stat they favour the most.
+
+[TO DO]
+
+## Conclusion
+
+[TO DO]
+
+**Made by Web Developer Adrian Beria**
